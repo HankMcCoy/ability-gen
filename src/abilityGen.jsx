@@ -28,7 +28,7 @@ var AbilityGen = React.createClass({
   renderAbility(ability) {
     return (
       <label>
-        {ability}
+        {ability.toUpperCase()}
         <input type="number"
           step="1" min="8" max="18"
           value={this.state.scores[ability]}
