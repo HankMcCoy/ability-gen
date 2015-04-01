@@ -19,8 +19,8 @@ var AbilityGen = React.createClass({
     var abilities = Object.keys(this.state.scores);
 
     return (
-      <div class="ability-gen">
-        <div class="ability-gen__points-left">Points left: {this.getPointsLeft}</div>}
+      <div className="ability-gen">
+        <div className="ability-gen__points-left">Points left: {this.getPointsLeft()}</div>
         {abilities.map(this.renderAbility)}
       </div>
     );
@@ -39,7 +39,9 @@ var AbilityGen = React.createClass({
   },
   getPointsLeft() {
     var scores = this.state.scores;
-    var totalCost = Object.keys(scores).map((key) => internal.abilityCosts[scores[key]])
+    var totalCost = Object.keys(scores)
+      .map((key) => internal.abilityCosts[scores[key]])
+      .reduce((sum, cost) => sum + cost, 0);
 
     return internal.pointMax - totalCost;
   },
@@ -47,9 +49,12 @@ var AbilityGen = React.createClass({
     return function handleAbilityChange(e) {
       var val = Math.max(Math.min(Math.floor(e.target.value), 18), 8);
 
-      this.setState((prevState) =>
-        Object.assign({}, prevState, { [ability]: val }));
-    }
+      if (val !== this.state.scores[ability]) {
+        this.setState({
+          scores: Object.assign({}, this.state.scores, { [ability]: val })
+        });
+      }
+    }.bind(this)
   }
 });
 
@@ -66,6 +71,6 @@ internal.abilityCosts = {
   17: 13,
   18: 16
 };
-internal.pointCost = 28;
+internal.pointMax = 28;
 
 export default AbilityGen;
