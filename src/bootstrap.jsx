@@ -4,6 +4,6 @@ require('core-js/shim');
 import React from 'react';
 import AbilityGen from './abilityGen';
 
-[].slice.apply(document.querySelectorAll('.ability-gen-container')).forEach((el) => {
+[].forEach.call(document.querySelectorAll('.ability-gen-container'), (el) => {
   React.render(<AbilityGen />, el);
 });
