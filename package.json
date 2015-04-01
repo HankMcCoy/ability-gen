@@ -1,0 +1,31 @@
+{
+  "name": "ability-gen",
+  "version": "0.0.1",
+  "description": "A tool for choosing starting ability scores in 13th Age.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hankmccoy/ability-gen"
+  },
+  "keywords": [
+    "13th",
+    "Age"
+  ],
+  "author": "Thomas Beirne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hankmccoy/ability-gen/issues"
+  },
+  "homepage": "https://github.com/hankmccoy/ability-gen",
+  "devDependencies": {
+    "babel-core": "^4.7.16",
+    "babel-loader": "^4.3.0",
+    "webpack": "^1.7.3"
+  },
+  "dependencies": {
+    "react": "^0.13.1"
+  }
+}
